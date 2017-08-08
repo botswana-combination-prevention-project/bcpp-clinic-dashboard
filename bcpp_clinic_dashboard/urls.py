@@ -50,3 +50,6 @@ def dashboard_urls():
                 dashboard_view_class.as_view(), name=dashboard_url_name),
         ])
     return urlpatterns
+
+
+urlpatterns = listboard_urls() + dashboard_urls()

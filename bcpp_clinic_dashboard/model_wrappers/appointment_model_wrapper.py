@@ -10,8 +10,8 @@ class AppointmentModelWrapper(BaseAppointmentModelWrapper):
     visit_model_wrapper_cls = SubjectVisitModelWrapper
 
     next_url_name = django_apps.get_app_config(
-        'bcpp_clinic_subject').dashboard_url_name
+        'bcpp_clinic_dashboard').dashboard_url_name
     next_url_attrs = ['subject_identifier']
     querystring_attrs = ['subject_identifier']
     dashboard_url_name = django_apps.get_app_config(
-        'bcpp_clinic_subject').dashboard_url_name
+        'bcpp_clinic_dashboard').dashboard_url_name
