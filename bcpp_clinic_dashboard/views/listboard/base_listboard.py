@@ -11,8 +11,8 @@ from ..mixins import MapAreaQuerysetViewMixin
 
 class BaseListboardView(AppConfigViewMixin, EdcBaseViewMixin, MapAreaQuerysetViewMixin, ListboardView):
 
-    app_config_name = 'bcpp_clinic_subject'
-    navbar_item_selected = 'bcpp_clinic_subject'
+    app_config_name = 'bcpp_clinic_dashboard'
+    navbar_item_selected = 'bcpp_clinic_dashboard'
     subject_eligibility_model = 'bcpp_clinic_subject.subjecteligibility'
 
     @property

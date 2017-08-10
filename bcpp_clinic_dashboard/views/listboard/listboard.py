@@ -12,6 +12,8 @@ class ListboardView(BaseListboardView):
 
     model = 'bcpp_clinic_subject.subjectconsent'
     model_wrapper_class = SubjectConsentModelWrapper
+    app_config_name = 'bcpp_clinic_dashboard'
+    navbar_item_selected = 'consented_subject'
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):

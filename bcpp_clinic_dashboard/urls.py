@@ -1,16 +1,39 @@
 from django.conf.urls import url
+from django.contrib import admin
 
 from edc_constants.constants import UUID_PATTERN
 from bcpp_clinic_subject.patterns import subject_identifier
 
 from .views import ListboardView, DashboardView
+from .views import ScreeningListBoardView
 
-app_name = 'bcpp_clinic_subject'
+app_name = 'bcpp_clinic_dashboard'
+
+screening_identifier = '[0-9A-Z]{7}'
+
+admin.autodiscover()
 
 
 def listboard_urls():
     urlpatterns = []
-    listboard_configs = [('listboard_url', ListboardView, 'listboard')]
+    listboard_configs = [
+        ('screening_listboard_url_name', ScreeningListBoardView, 'screening_listboard_url_name')]
+    for listboard_url_name, listboard_view_class, label in listboard_configs:
+        urlpatterns.extend([
+            url(r'^' + label + '/'
+                '(?P<screening_identifier>' + screening_identifier + ')/'
+                '(?P<page>\d+)/',
+                listboard_view_class.as_view(), name=listboard_url_name),
+            url(r'^' + label + '/'
+                '(?P<screening_identifier>' + screening_identifier + ')/',
+                listboard_view_class.as_view(), name=listboard_url_name),
+            url(r'^' + label + '/(?P<page>\d+)/',
+                listboard_view_class.as_view(), name=listboard_url_name),
+            url(r'^' + label + '/',
+                listboard_view_class.as_view(), name=listboard_url_name)])
+
+    listboard_configs = [
+        ('listboard_url', ListboardView, 'listboard')]
     for listboard_url_name, listboard_view_class, label in listboard_configs:
         urlpatterns.extend([
             url(r'^' + label + '/'

@@ -12,23 +12,26 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
 
-                    <i class="fa fa-user-circle-o fa-2x"></i></i>
+                    <i class="fa fa-user-circle-o fa-2x"> {{navbar_name}}</i></i>
                         <span class="pull-right">{% include 'edc_dashboard/search_form.html' %}</span>
-                    
-                    {% include 'bcpp_clinic_screening/listboard/add_subject_eligibility_button.html' %}
 
                 </div>
                 <div class="table table-responsive">
                     <table class="table table-condensed table-hover small">
                     <thead>
+					{% if navbar_name == 'screening' %}
+						{% include 'bcpp_clinic_dashboard/screening/listboard/results_header.html' %}
+			         	</thead>
+			         	<tbody>
+                    	{% include 'bcpp_clinic_dashboard/screening/listboard/results_body.html' %}
+					{% else %}
+                    	{% include 'bcpp_clinic_dashboard/listboard/results_header.html' %}
 
-                    {% include 'bcpp_clinic_screening/listboard/results_header.html' %}
+			         	</thead>
+			         	<tbody>
 
-			         </thead>
-			         <tbody>
-
-                    {% include 'bcpp_clinic_screening/listboard/results_body.html' %}
-
+                    	{% include 'bcpp_clinic_dashboard/listboard/results_body.html' %}
+					{% endif %}
 			         </tbody>
 			         </table>
                     <!-- begin spacer rows -->

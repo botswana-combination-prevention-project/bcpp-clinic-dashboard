@@ -4,23 +4,21 @@ from django.apps import apps as django_apps
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.utils.decorators import method_decorator
-from edc_base.view_mixins import EdcBaseViewMixin
-from edc_dashboard.view_mixins import AppConfigViewMixin
-from edc_dashboard.views import ListboardView
 
 from ...model_wrappers import SubjectEligibilityModelWrapper
-from ..mixins import MapAreaQuerysetViewMixin
+from .base_listboard import BaseListboardView
 
 
-class ListBoardView(AppConfigViewMixin, EdcBaseViewMixin, MapAreaQuerysetViewMixin, ListboardView):
+class ScreeningListBoardView(BaseListboardView):
 
-    model = 'bcpp_clinic_subject.subjetelgibility'
+    model = 'bcpp_clinic_subject.subjecteligibility'
     model_wrapper_cls = SubjectEligibilityModelWrapper
     listboard_url_name = django_apps.get_app_config(
-        'bcpp_clinic_screening').listboard_url_name
+        'bcpp_clinic_dashboard').screening_listboard_url_name
     paginate_by = 10
-    navbar_item_selected = 'bcpp_clinic_screening'
-    app_config_name = 'bcpp_clinic_screening'
+    navbar_item_selected = 'screened_subject'
+
+    app_config_name = 'bcpp_clinic_dashboard'
     ordering = '-modified'
 
     @method_decorator(login_required)
