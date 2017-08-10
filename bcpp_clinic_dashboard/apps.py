@@ -10,4 +10,5 @@ class AppConfig(DjangoApponfig):
     dashboard_url_name = 'bcpp_clinic_dashboard:dashboard_url'
     admin_site_name = 'bcpp_clinic_subject_admin'
 
-    screening_listboard_url_name = 'bcpp_clinic_dashboard:screening_listboard_url_name'
+    screening_listboard_template_name = 'bcpp_clinic_dashboard/screening/listboard.html'
+    screening_listboard_url_name = 'bcpp_clinic_dashboard:screening_listboard_url'

@@ -25,8 +25,14 @@ class ScreeningListBoardView(BaseListboardView):
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
+    def get_template_names(self):
+        return [django_apps.get_app_config(
+            self.app_config_name).screening_listboard_template_name]
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context.update(
+            subject_screening_add_url=self.model_cls().get_absolute_url())
         return context
 
     def get_queryset_filter_options(self, request, *args, **kwargs):

@@ -4,8 +4,7 @@ from django.contrib import admin
 from edc_constants.constants import UUID_PATTERN
 from bcpp_clinic_subject.patterns import subject_identifier
 
-from .views import ListboardView, DashboardView
-from .views import ScreeningListBoardView
+from .views import ListboardView, DashboardView, ScreeningListBoardView
 
 app_name = 'bcpp_clinic_dashboard'
 
@@ -16,21 +15,6 @@ admin.autodiscover()
 
 def listboard_urls():
     urlpatterns = []
-    listboard_configs = [
-        ('screening_listboard_url_name', ScreeningListBoardView, 'screening_listboard_url_name')]
-    for listboard_url_name, listboard_view_class, label in listboard_configs:
-        urlpatterns.extend([
-            url(r'^' + label + '/'
-                '(?P<screening_identifier>' + screening_identifier + ')/'
-                '(?P<page>\d+)/',
-                listboard_view_class.as_view(), name=listboard_url_name),
-            url(r'^' + label + '/'
-                '(?P<screening_identifier>' + screening_identifier + ')/',
-                listboard_view_class.as_view(), name=listboard_url_name),
-            url(r'^' + label + '/(?P<page>\d+)/',
-                listboard_view_class.as_view(), name=listboard_url_name),
-            url(r'^' + label + '/',
-                listboard_view_class.as_view(), name=listboard_url_name)])
 
     listboard_configs = [
         ('listboard_url', ListboardView, 'listboard')]
@@ -75,4 +59,25 @@ def dashboard_urls():
     return urlpatterns
 
 
-urlpatterns = listboard_urls() + dashboard_urls()
+def screening_listboard_urls():
+    urlpatterns = []
+
+    listboard_configs = [
+        ('screening_listboard_url', ScreeningListBoardView, 'screening_listboard')]
+    for listboard_url_name, listboard_view_class, label in listboard_configs:
+        urlpatterns.extend([
+            url(r'^' + label + '/'
+                '(?P<screening_identifier>' + screening_identifier + ')/'
+                '(?P<page>\d+)/',
+                listboard_view_class.as_view(), name=listboard_url_name),
+            url(r'^' + label + '/'
+                '(?P<screening_identifier>' + screening_identifier + ')/',
+                listboard_view_class.as_view(), name=listboard_url_name),
+            url(r'^' + label + '/(?P<page>\d+)/',
+                listboard_view_class.as_view(), name=listboard_url_name),
+            url(r'^' + label + '/',
+                listboard_view_class.as_view(), name=listboard_url_name)])
+    return urlpatterns
+
+
+urlpatterns = listboard_urls() + screening_listboard_urls() + dashboard_urls()
