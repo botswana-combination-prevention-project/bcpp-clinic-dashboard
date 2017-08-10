@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.utils.decorators import method_decorator
 
 from ...model_wrappers import SubjectEligibilityModelWrapper
-from .base_listboard import BaseListboardView
+from ..listboard import BaseListboardView
 
 
 class ScreeningListBoardView(BaseListboardView):
