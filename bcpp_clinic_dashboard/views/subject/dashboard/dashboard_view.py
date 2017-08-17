@@ -16,17 +16,15 @@ from .base_dashboard_view import BaseDashboardView
 class DashboardView(
         BaseDashboardView, EdcDashboardViewMixin,
         AppConfigViewMixin, EdcBaseViewMixin, TemplateView):
-    app_config_name = 'bcpp_clinic_subject'
-    navbar_item_selected = 'bcpp_clinic_subject'
-    consent_model_wrapper_class = SubjectConsentModelWrapper
+
+    app_config_name = 'bcpp_clinic_dashboard'
+    consent_model = 'bcpp_clininc_subject.subjectconsent'
     off_study_model = 'bcpp_clinic_subject.subjectoffstudy'
+    consent_model_wrapper_cls = SubjectConsentModelWrapper
     crf_model_wrapper_cls = CrfModelWrapper
     requisition_model_wrapper_cls = RequisitionModelWrapper
     visit_model_wrapper_cls = SubjectVisitModelWrapper
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.anonymous = None
+    navbar_item_selected = 'consented_subject'
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -43,7 +41,7 @@ class DashboardView(
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         dashboard_url_name = django_apps.get_app_config(
-            'bcpp_clinic_subject').dashboard_url_name,
+            'bcpp_clinic_dashboard').dashboard_url_name
         try:
             subject_offstudy = self.subject_off_study_model_cls.objects.get(
                 subject_identifier=self.subject_identifier)

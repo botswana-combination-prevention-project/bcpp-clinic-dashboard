@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.utils.decorators import method_decorator
 
 from ...model_wrappers import SubjectEligibilityModelWrapper
-from ..listboard import BaseListboardView
+from ..subject import BaseListboardView
 
 
 class ScreeningListBoardView(BaseListboardView):
@@ -17,7 +17,6 @@ class ScreeningListBoardView(BaseListboardView):
         'bcpp_clinic_dashboard').screening_listboard_url_name
     paginate_by = 10
     navbar_item_selected = 'screened_subject'
-
     app_config_name = 'bcpp_clinic_dashboard'
     ordering = '-modified'
 

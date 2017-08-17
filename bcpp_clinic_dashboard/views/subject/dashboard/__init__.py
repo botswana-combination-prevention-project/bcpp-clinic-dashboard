@@ -1,3 +1,6 @@
 from .appointment_view_mixin import AppointmentViewMixin
 from .visit_schedule_view_mixin import VisitScheduleViewMixin
 from .subject_visit_view_mixin import SubjectVisitViewMixin
+from .base_dashboard_view import BaseDashboardView
+from .dashboard_view import DashboardView
+from .subject_locator_view_mixin import SubjectLocatorViewMixin

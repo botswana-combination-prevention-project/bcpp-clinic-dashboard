@@ -4,14 +4,14 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.utils.decorators import method_decorator
 
-from ...model_wrappers import SubjectConsentModelWrapper
+from ....model_wrappers import SubjectConsentModelWrapper
 from .base_listboard import BaseListboardView
 
 
 class ListboardView(BaseListboardView):
 
     model = 'bcpp_clinic_subject.subjectconsent'
-    model_wrapper_class = SubjectConsentModelWrapper
+    model_wrapper_cls = SubjectConsentModelWrapper
     app_config_name = 'bcpp_clinic_dashboard'
     navbar_item_selected = 'consented_subject'
 

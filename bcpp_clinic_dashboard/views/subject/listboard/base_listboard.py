@@ -6,7 +6,7 @@ from edc_dashboard.view_mixins import AppConfigViewMixin
 from edc_dashboard.views import ListboardView
 from edc_map.site_mappers import site_mappers
 
-from ..mixins import MapAreaQuerysetViewMixin
+from ...mixins import MapAreaQuerysetViewMixin
 
 
 class BaseListboardView(AppConfigViewMixin, EdcBaseViewMixin, MapAreaQuerysetViewMixin, ListboardView):

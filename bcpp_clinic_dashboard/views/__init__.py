@@ -1,3 +1,2 @@
-from .dashboard.default import DashboardView
-from .listboard import ListboardView, BaseListboardView
 from .screening import ScreeningListBoardView
+from .subject import DashboardView, ListboardView, BaseListboardView

@@ -4,8 +4,8 @@ from edc_metadata.view_mixins.metadata_view_mixin import MetaDataViewMixin
 from edc_appointment.view_mixins import AppointmentViewMixin
 
 from ....model_wrappers import AppointmentModelWrapper
-from ..subject_visit_view_mixin import SubjectVisitViewMixin
-from ..visit_schedule_view_mixin import VisitScheduleViewMixin
+from .visit_schedule_view_mixin import VisitScheduleViewMixin
+from .subject_visit_view_mixin import SubjectVisitViewMixin
 from .subject_locator_view_mixin import SubjectLocatorViewMixin
 
 

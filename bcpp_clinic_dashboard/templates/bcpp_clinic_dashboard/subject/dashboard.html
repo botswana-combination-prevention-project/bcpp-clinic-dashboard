@@ -3,12 +3,12 @@
 {% load staticfiles %}
 
 {% block top_bar %}
-    {% include "bcpp_clinic_dashboard/dashboard/top_bar.html" %}
+    {% include "bcpp_clinic_dashboard/subject/dashboard/top_bar.html" %}
 {% endblock top_bar %}
 
 {% block side_bar %}
 
-    {% include "bcpp_clinic_dashboard/dashboard/sidebar.html" %}
+    {% include "bcpp_clinic_dashboard/subject/dashboard/sidebar.html" %}
 
 {% endblock side_bar%}
 
@@ -18,7 +18,7 @@
 
 {% block crfs %}
 	{% if crfs %}
-  		{% include "bcpp_clinic_dashboard/dashboard/crfs.html" %}
+  		{% include "bcpp_clinic_dashboard/subject/dashboard/crfs.html" %}
   {% endif %}    
 {% endblock crfs %}
 
