@@ -22,8 +22,8 @@ class DashboardView(
     off_study_model = 'bcpp_clinic_subject.subjectoffstudy'
     consent_model_wrapper_cls = SubjectConsentModelWrapper
     crf_model_wrapper_cls = CrfModelWrapper
-    requisition_model_wrapper_cls = RequisitionModelWrapper
     visit_model_wrapper_cls = SubjectVisitModelWrapper
+    requisition_model_wrapper_cls = RequisitionModelWrapper
     navbar_item_selected = 'consented_subject'
 
     @method_decorator(login_required)

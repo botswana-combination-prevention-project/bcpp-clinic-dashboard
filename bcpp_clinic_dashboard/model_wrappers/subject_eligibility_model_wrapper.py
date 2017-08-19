@@ -45,6 +45,6 @@ class SubjectEligibilityModelWrapper(ConsentMixin, ModelWrapper):
 
     model = 'bcpp_clinic_subject.subjecteligibility'
     next_url_name = django_apps.get_app_config(
-        'bcpp_clinic_dashboard').listboard_url_name
+        'bcpp_clinic_dashboard').screening_listboard_url_name
     next_url_attrs = ['screening_identifier']
     querystring_attrs = ['gender']
