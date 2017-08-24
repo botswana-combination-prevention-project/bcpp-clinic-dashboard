@@ -1,4 +1,5 @@
 from django.apps import apps as django_apps
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.decorators import method_decorator
@@ -49,5 +50,6 @@ class DashboardView(
             subject_offstudy = None
         context.update(
             subject_offstudy=subject_offstudy,
+            map_area=settings.CURRENT_MAP_AREA,
             bcpp_clinic_subject_dashboard_url_name=dashboard_url_name)
         return context

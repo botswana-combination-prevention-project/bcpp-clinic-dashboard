@@ -1,4 +1,5 @@
 from django.apps import apps as django_apps
+from django.conf import settings
 from edc_base.utils import get_utcnow
 from edc_base.view_mixins import EdcBaseViewMixin
 from edc_constants.constants import MALE
@@ -38,5 +39,6 @@ class BaseListboardView(AppConfigViewMixin, EdcBaseViewMixin, MapAreaQuerysetVie
         context = super().get_context_data(**kwargs)
         context.update(
             MALE=MALE,
+            map_area=settings.CURRENT_MAP_AREA,
             reference_datetime=get_utcnow())
         return context
